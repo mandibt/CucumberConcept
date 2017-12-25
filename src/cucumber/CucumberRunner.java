@@ -9,6 +9,8 @@ import cucumber.api.junit.Cucumber;
 		format = {"pretty", "json:target/"},
 		features = {"src/cucumber/"}
 		) 
+		
+	//test comment	
 public class CucumberRunner {
 
 }
