@@ -38,4 +38,23 @@ public class StepDefinitions {
 		Assert.assertTrue("Not on contact confirmation page", 
 				driver.getTitle().equals("Contact Confirmation"));
 	}
+	
+	@When("^I navigate to \"([^\"]*)\"$")
+	public void shouldClickOnLink(String link) throws Throwable {
+		driver.findElement(By.id(link)).click();
+	
+	}
+
+	@Then("^I check page title is \"([^\"]*)\"$")
+	public void checkPageTitle(String title) throws Throwable {
+		Assert.assertTrue(driver.getTitle().contains(title));
+	}
+
+	@And("^I close the browser$")
+	public void closeBrowser() throws Throwable {
+		driver.close();
+	}
+
+	
+	
 }
