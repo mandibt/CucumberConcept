@@ -12,11 +12,10 @@ import cucumber.api.java.en.When;
 
 public class StepDefinitions {
 	
-	WebDriver driver = null;
+	WebDriver driver = new ChromeDriver();
 	
 	@Given("^I am on my zoo website$")
 	public void shouldNavigateToZooSite() throws Throwable {
-		driver = new ChromeDriver();
 		driver.navigate().to("http://www.thetestroom.com/webapp/index.html");
 	}
 
