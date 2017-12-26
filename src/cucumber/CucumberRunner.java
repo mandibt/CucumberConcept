@@ -6,11 +6,11 @@ import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
 @Cucumber.Options(
-		format = {"pretty", "json:target/"},
+		format = {"pretty", "json:target/cucumber.json"},
 		features = {"src/cucumber/"}
 		) 
 		
-	//test comment	
+
 public class CucumberRunner {
 
 }

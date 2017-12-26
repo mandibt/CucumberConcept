@@ -1,6 +1,6 @@
 Feature: Proof of concept
 
   Scenario: First test
-    Given this is my first step
-    When this is second step
-    Then this is my final step
+    Given I navigate to the zoo website
+    When I click on the adoption link
+    Then I check to see that no animals are available
