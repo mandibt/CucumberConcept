@@ -30,7 +30,6 @@ public class StepDefinitions {
 	@And("^populate the contact form$")
 	public void shouldPopulateContactForm(DataTable table) throws Throwable {	
 		List<List<String>> data = table.raw();
-		System.out.println(data.get(1).get(1));
 		
 		driver.findElement(By.name("name_field")).sendKeys(data.get(1).get(1));
 		driver.findElement(By.name("address_field")).sendKeys(data.get(2).get(1));

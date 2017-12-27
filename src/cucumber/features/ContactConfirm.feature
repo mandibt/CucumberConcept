@@ -12,3 +12,4 @@ Feature: To test Contact Form on ZOO Adoption page
       | Postcode | A 1111       |
       | Email    | ice@ice.baby |
     Then I should be on the contact confirmation page
+    And I close the browser
