@@ -29,6 +29,17 @@ public class StepDefinitions {
 		driver.quit();
 	}
 	
+	@Before("@web")
+	public void setUpWeb() {
+		System.out.println("before web tag method");
+//		driver = new ChromeDriver();
+	}
+	
+	@After("@web") 
+	public void tearDownWeb() {
+		System.out.println("after web tag method");
+//		driver.quit();
+	}
 	@Given("^I am on my zoo website$")
 	public void shouldNavigateToZooSite() throws Throwable {
 		driver.navigate().to("http://www.thetestroom.com/webapp/index.html");
