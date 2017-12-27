@@ -8,6 +8,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import cucumber.api.DataTable;
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -15,7 +17,17 @@ import cucumber.api.java.en.When;
 
 public class StepDefinitions {
 	
-	WebDriver driver = new ChromeDriver();
+	WebDriver driver;
+	
+	@Before
+	public void setUp() {
+		driver = new ChromeDriver();
+	}
+	
+	@After 
+	public void tearDown() {
+		driver.quit();
+	}
 	
 	@Given("^I am on my zoo website$")
 	public void shouldNavigateToZooSite() throws Throwable {
@@ -60,6 +72,25 @@ public class StepDefinitions {
 		driver.close();
 	}
 
-	
+	@And("^Check for an available animal$")
+	public void check_for_an_available_animal() throws Throwable {
+		driver.findElement(By.id("check_btn_02")).click();
+	}
+
+	@And("^Populate the form$")
+	public void populate_the_form() throws Throwable {
+		driver.findElement(By.name("name_field")).sendKeys("Rudolph");
+		driver.findElement(By.name("address_field")).sendKeys("111 Forest St.");
+		driver.findElement(By.name("postcode_field")).sendKeys("B 22222");
+		driver.findElement(By.name("email_field")).sendKeys("red@nose.deer");
+		driver.findElement(By.id("submit_adoption")).click();
+	}
+
+	@Then("^There should be a confirmation message$")
+	public void there_should_be_a_confirmation_message() throws Throwable {
+		Assert.assertTrue(driver.findElement(By.tagName("p")).getText().contains("YOUR ADOPTION HAS BEEN SET UP")) ;
+	}
+
+
 	
 }
