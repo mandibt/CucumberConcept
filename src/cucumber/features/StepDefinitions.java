@@ -1,10 +1,13 @@
 package cucumber.features;
 
+import java.util.List;
+
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import cucumber.api.DataTable;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -25,11 +28,14 @@ public class StepDefinitions {
 	}
 
 	@And("^populate the contact form$")
-	public void shouldPopulateContactForm() throws Throwable {
-		driver.findElement(By.name("name_field")).sendKeys("Santa Clause");
-		driver.findElement(By.name("address_field")).sendKeys("Merry Christmas 1/1");
-		driver.findElement(By.name("postcode_field")).sendKeys("7000");
-		driver.findElement(By.name("email_field")).sendKeys("zoo@test.com");
+	public void shouldPopulateContactForm(DataTable table) throws Throwable {	
+		List<List<String>> data = table.raw();
+		System.out.println(data.get(1).get(1));
+		
+		driver.findElement(By.name("name_field")).sendKeys(data.get(1).get(1));
+		driver.findElement(By.name("address_field")).sendKeys(data.get(2).get(1));
+		driver.findElement(By.name("postcode_field")).sendKeys(data.get(3).get(1));
+		driver.findElement(By.name("email_field")).sendKeys(data.get(4).get(1));
 		driver.findElement(By.id("submit_message")).click();
 	}
 
