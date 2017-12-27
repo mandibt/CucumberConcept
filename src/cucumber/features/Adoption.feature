@@ -1,5 +1,7 @@
 Feature: Adopt an animal
 
+
+	@web
   Scenario: Check if animal is available and adopt
     Given I am on my zoo website
     When I navigate to "adoption_link"
